@@ -1,0 +1,98 @@
+{
+  "users": [
+    {
+      "name": "Bikash Barik",
+      "email": "bikash@example.com",
+      "role": "Admin",
+      "salary": 120000,
+      "location": "bangalore",
+      "isActive": false,
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Asha Singh",
+      "email": "asha@example.com",
+      "role": "Editor",
+      "salary": 85000,
+      "isActive": true
+    },
+    {
+      "name": "Megha",
+      "email": "mg@g.com",
+      "role": "Editor",
+      "salary": 345676,
+      "isActive": true,
+      "id": "Rco8isTP4IY"
+    },
+    {
+      "name": "wwewe",
+      "email": "ff@g.com",
+      "role": "Admin",
+      "salary": 0,
+      "location": "ddfd",
+      "isActive": true,
+      "id": "WK4BO8j5s1o"
+    },
+    {
+      "name": "Asha Singh",
+      "email": "admin@example.com",
+      "role": "Viewer",
+      "salary": 4555,
+      "location": "",
+      "isActive": true,
+      "id": "gps6wvO71RA"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "message": "Dashboard listening for backend events",
+      "type": "info",
+      "timestamp": "00:00"
+    },
+    {
+      "id": "8bJ6X_BtsTw",
+      "message": "User Tuntu saved",
+      "type": "success",
+      "timestamp": "2:27:17 AM"
+    },
+    {
+      "id": "5Lp3lKOyFoY",
+      "message": "User removed from dashboard",
+      "type": "warning",
+      "timestamp": "2:52:39 AM"
+    },
+    {
+      "id": "-_j-lq15Ucs",
+      "message": "User removed from dashboard",
+      "type": "warning",
+      "timestamp": "2:52:42 AM"
+    },
+    {
+      "id": "kfUzOHucS5c",
+      "message": "User Megha saved",
+      "type": "success",
+      "timestamp": "2:54:28 AM"
+    },
+    {
+      "id": "xjjhWbDMXSs",
+      "message": "User wwewe saved",
+      "type": "success",
+      "timestamp": "3:05:53 AM"
+    },
+    {
+      "id": "ai9-al2tpWI",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "3:35:50 AM"
+    },
+    {
+      "id": "4HkjGxMF3E8",
+      "message": "User Bikash Barik saved",
+      "type": "success",
+      "timestamp": "3:37:01 AM"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

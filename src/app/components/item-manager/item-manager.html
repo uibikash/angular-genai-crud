@@ -1,57 +1,70 @@
-<div style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
-  <h2>Angular GenAI CRUD Application</h2>
-
-  <!-- FORM SECTION -->
-  <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
-    <h3>{{ editingId() !== null ? 'Edit Item' : 'Add New Item' }}</h3>
-
-    <div style="margin-bottom: 0.8rem;">
-      <label>Title: </label>
-      <input type="text" [ngModel]="title()" (ngModelChange)="title.set($event)" placeholder="Item Title" style="width: 100%; padding: 0.5rem;" />
+<div class="container py-4" style="max-width: 860px; margin: 0 auto; font-family: Inter, sans-serif;">
+  <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <p class="text-primary fw-semibold mb-1">Item Manager</p>
+        <h2 class="h3 fw-bold mb-2">Create, edit, and organize your catalog</h2>
+        <p class="text-muted mb-0">Use the form below to add new items or update an existing one quickly.</p>
+      </div>
+      <div class="badge bg-light text-dark px-3 py-2">{{ itemList().length }} items</div>
     </div>
-
-    <div style="margin-bottom: 0.8rem;">
-      <label>Category: </label>
-      <input type="text" [ngModel]="category()" (ngModelChange)="category.set($event)" style="width: 100%; padding: 0.5rem;" />
-    </div>
-
-    <div style="margin-bottom: 0.8rem;">
-      <label>Description: </label>
-      <textarea [ngModel]="description()" (ngModelChange)="description.set($event)" rows="3" style="width: 100%; padding: 0.5rem;"></textarea>
-      
-      <!-- GEN AI BUTTON -->
-      <button 
-        type="button" 
-        (click)="generateDescription()" 
-        [disabled]="isAiGenerating() || !title()"
-        style="margin-top: 0.5rem; background: #6200ee; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
-        {{ isAiGenerating() ? 'Generating with Gemini...' : '✨ Generate Description with AI' }}
-      </button>
-    </div>
-
-    <button (click)="saveItem()" style="padding: 0.5rem 1.5rem; background: #018786; color: white; border: none; border-radius: 4px; cursor: pointer;">
-      {{ editingId() !== null ? 'Update Item' : 'Save Item' }}
-    </button>
-    
-    @if (editingId() !== null) {
-      <button (click)="resetForm()" style="margin-left: 0.5rem; padding: 0.5rem 1rem;">Cancel</button>
-    }
   </div>
 
-  <!-- READ & DELETE LIST -->
-  <h3>Item List</h3>
-  @for (item of itemList(); track item.id) {
-    <div style="border-bottom: 1px solid #eee; padding: 0.8rem 0; display: flex; justify-content: space-between; align-items: center;">
-      <div>
-        <strong>{{ item.title }}</strong> <small>({{ item.category }})</small>
-        <p style="margin: 0.3rem 0; color: #555;">{{ item.description }}</p>
+  <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="h5 fw-semibold mb-0">{{ editingId() !== null ? 'Edit Item' : 'Add New Item' }}</h3>
+      @if (editingId() !== null) {
+        <button class="btn btn-outline-secondary btn-sm" (click)="resetForm()">Cancel</button>
+      }
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Title</label>
+        <input class="form-control" type="text" [ngModel]="title()" (ngModelChange)="title.set($event)" placeholder="Item title" />
       </div>
-      <div>
-        <button (click)="editItem(item)" style="margin-right: 0.5rem;">Edit</button>
-        <button (click)="deleteItem(item.id)" style="color: red;">Delete</button>
+
+      <div class="col-md-6">
+        <label class="form-label">Category</label>
+        <input class="form-control" type="text" [ngModel]="category()" (ngModelChange)="category.set($event)" placeholder="Category" />
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" [ngModel]="description()" (ngModelChange)="description.set($event)" rows="4" placeholder="Add a short description"></textarea>
       </div>
     </div>
-  } @empty {
-    <p>No items found.</p>
-  }
+
+    <div class="d-flex flex-wrap gap-2 mt-3">
+      <button class="btn btn-primary" (click)="saveItem()">
+        {{ editingId() !== null ? 'Update Item' : 'Save Item' }}
+      </button>
+      <button class="btn btn-outline-primary" type="button" (click)="generateDescription()" [disabled]="isAiGenerating() || !title()">
+        {{ isAiGenerating() ? 'Generating…' : '✨ Generate with AI' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-4 p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="h5 fw-semibold mb-0">Item List</h3>
+      <span class="text-muted small">Manage entries directly</span>
+    </div>
+
+    @for (item of itemList(); track item.id) {
+      <div class="border rounded-3 p-3 mb-3 d-flex justify-content-between align-items-start gap-3">
+        <div>
+          <div class="fw-semibold">{{ item.title }}</div>
+          <div class="small text-muted mb-2">{{ item.category }}</div>
+          <div class="text-muted">{{ item.description }}</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" (click)="editItem(item)">Edit</button>
+          <button class="btn btn-outline-danger btn-sm" (click)="deleteItem(item.id)">Delete</button>
+        </div>
+      </div>
+    } @empty {
+      <div class="text-muted text-center py-4">No items found yet.</div>
+    }
+  </div>
 </div>

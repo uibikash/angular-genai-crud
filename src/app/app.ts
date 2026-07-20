@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { ItemManagerComponent } from './components/item-manager/item-manager';
+import { RouterOutlet } from '@angular/router';
+import { fadeTransition } from './animations/page.animation';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ItemManagerComponent],
-  template: `<app-item-manager></app-item-manager>`
+  imports: [RouterOutlet],
+  template: `<div @fadeTransition><router-outlet></router-outlet></div>`,
+  animations: [fadeTransition]
 })
 export class AppComponent {}
