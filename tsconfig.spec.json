@@ -6,7 +6,8 @@
     "outDir": "./src",
     "rootDir": "./src",
     "types": [
-      "vitest/globals"
+      "vitest/globals",
+      "node"
     ]
   },
   "include": [
