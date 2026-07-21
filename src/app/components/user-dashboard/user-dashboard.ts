@@ -1,4 +1,4 @@
-import { DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -17,13 +17,14 @@ interface UserForm {
   role: string;
   salary: number;
   location: string;
+  dateOfJoining: string;
   isActive: boolean;
 }
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [FormsModule, TruncatePipe, DecimalPipe, StatusPipe, HighlightDirective, RouterLink, RouterLinkActive],
+  imports: [FormsModule, TruncatePipe, DecimalPipe, StatusPipe, HighlightDirective, RouterLink, RouterLinkActive, DatePipe],
   animations: [fadeTransition],
   templateUrl: './user-dashboard.html',
   styleUrls: ['./user-dashboard.scss'],
@@ -62,6 +63,7 @@ export class UserDashboardComponent implements OnInit {
     role: 'Viewer',
     salary: 0,
     location: '',
+    dateOfJoining: '',
     isActive: true
   };
 
@@ -215,6 +217,7 @@ export class UserDashboardComponent implements OnInit {
       role: this.form.role,
       salary: this.form.salary,
       location: this.form.location.trim(),
+      dateOfJoining: this.form.dateOfJoining,
       isActive: this.form.isActive
     };
 
@@ -243,6 +246,7 @@ export class UserDashboardComponent implements OnInit {
       role: user.role,
       salary: user.salary,
       location: user.location || '',
+      dateOfJoining: user.dateOfJoining || '',
       isActive: user.isActive
     };
     this.showModal.set(true);
@@ -277,6 +281,7 @@ export class UserDashboardComponent implements OnInit {
       role: 'Viewer',
       salary: 0,
       location: '',
+      dateOfJoining: '',
       isActive: true
     };
     this.isSubmitting.set(false);

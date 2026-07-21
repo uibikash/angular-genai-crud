@@ -1,248 +1,321 @@
 <div class="dashboard-shell">
-  <nav class="navbar navbar-expand-lg rounded-4 shadow-sm mb-4" [class.navbar-dark]="!darkMode()" [class.bg-primary]="!darkMode()" [class.navbar-light]="darkMode()" [class.bg-dark]="darkMode()">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-semibold" href="#">UserHub</a>
-      <div class="navbar-nav ms-auto d-flex flex-row gap-2">
-        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Overview</a>
-        <a class="nav-link" routerLink="/dashboard/items" routerLinkActive="active">Items</a>
-        <a class="nav-link" href="#">Users</a>
-        <a class="nav-link" href="#">Reports</a>
-        <a class="nav-link" href="#">Settings</a>
-        <button class="btn btn-outline-light btn-sm ms-3" type="button" (click)="toggleTheme()">{{ darkMode() ? '☀️ Light' : '🌙 Dark' }}</button>
-        <button class="btn btn-outline-light btn-sm" type="button" (click)="logout()">Logout</button>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container py-2">
-    <div class="row g-4">
-      <div class="col-12">
-        <div class="hero-card rounded-4 shadow-sm p-4" appHighlight>
-          <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
-            <div>
-              <p class="text-primary fw-semibold mb-2">Welcome back</p>
-              <h2 class="h3 fw-bold mb-2">Your employee command center</h2>
-              <p class="text-muted mb-0">Track team activity, manage accounts, and keep your records up to date.</p>
+    <nav class="navbar navbar-expand-lg shadow-sm mb-4" [class.navbar-dark]="!darkMode()"
+        [class.bg-primary]="!darkMode()" [class.navbar-light]="darkMode()" [class.bg-dark]="darkMode()">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-semibold" href="#">UserHub</a>
+            <div class="navbar-nav ms-auto d-flex flex-row gap-2">
+                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">Overview</a>
+                <a class="nav-link" routerLink="/dashboard/items" routerLinkActive="active">Items</a>
+                <a class="nav-link" href="#">Users</a>
+                <a class="nav-link" href="#">Reports</a>
+                <a class="nav-link" href="#">Settings</a>
+                <button class="btn btn-outline-light btn-sm ms-3" type="button" (click)="toggleTheme()">{{ darkMode() ?
+                    '☀️ Light' : '🌙 Dark' }}</button>
+                <button class="btn btn-outline-light btn-sm" type="button" (click)="logout()">Logout</button>
             </div>
-            <div class="d-flex flex-wrap gap-2">
-              <button class="btn btn-primary" type="button" (click)="openCreateModal()">Add User</button>
-              <span class="badge bg-light text-dark px-3 py-2">{{ users().length }} total</span>
-            </div>
-          </div>
-
-          <div class="row g-3 mt-3">
-            <div class="col-md-4">
-              <div class="stats-card p-3 rounded-3">
-                <div class="small text-muted">Active users</div>
-                <div class="h4 fw-bold mb-0">{{ activeCount() }}</div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="stats-card p-3 rounded-3">
-                <div class="small text-muted">Total salary</div>
-                <div class="h4 fw-bold mb-0">${{ totalSalary() | number }}</div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="stats-card p-3 rounded-3">
-                <div class="small text-muted">Live status</div>
-                <div class="h4 fw-bold mb-0">{{ connectionState() }}</div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+    </nav>
 
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4">
-          <div class="card-body p-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div>
-                <h2 class="h4 fw-semibold mb-1">User Directory</h2>
-                <p class="text-muted mb-0">Manage team members with a modern admin view.</p>
-              </div>
-              <div class="d-flex align-items-center gap-2">
-                <span class="badge bg-success-subtle text-success-emphasis">{{ filteredUsers.length }} users</span>
-              </div>
+    <div class="container py-2">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="hero-card rounded-4 shadow-sm p-3" appHighlight>
+                    <div class="row align-items-center g-3">
+
+                        <!-- Left Column: Compact Header & Key Metrics -->
+                        <div class="col-lg-7">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div>
+                                    <span class="badge bg-primary-subtle text-primary fw-semibold me-2">Welcome
+                                        back</span>
+                                    <span class="h5 fw-bold mb-0 align-middle">Your employee command center</span>
+                                </div>
+                            </div>
+
+                            <!-- Stat Cards in a Single Compact Row -->
+                            <div class="row g-2 mt-1">
+                                <div class="col-4">
+                                    <div class="stats-card p-2 rounded-3 text-center">
+                                        <div class="stats-label text-muted">Active Users</div>
+                                        <div class="h5 fw-bold mb-0 text-primary">{{ activeCount() }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stats-card p-2 rounded-3 text-center">
+                                        <div class="stats-label text-muted">Total Salary</div>
+                                        <div class="h5 fw-bold mb-0">${{ totalSalary() | number }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stats-card p-2 rounded-3 text-center">
+                                        <div class="stats-label text-muted">Live Status</div>
+                                        <div class="h5 fw-bold mb-0 text-success">{{ connectionState() }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Compact Live Activity Scroll Box -->
+                        <div class="col-lg-5">
+                            <div class="activity-card p-3 rounded-3 bg-white border shadow-sm">
+                                <!-- Header -->
+                                <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="pulse-dot"></span>
+                                        <span class="fw-semibold text-dark small">Live Activity</span>
+                                    </div>
+                                    <span
+                                        class="badge bg-primary-subtle text-primary rounded-pill px-2 py-1 extra-small fw-normal">
+                                        <i class="bi bi-broadcast me-1"></i>Realtime
+                                    </span>
+                                </div>
+
+                                <!-- Scrollable Feed -->
+                                <div class="activity-scroll">
+                                    <ul class="list-unstyled mb-0">
+                                        @for (event of liveEvents(); track event.id) {
+                                        <li
+                                            class="activity-item d-flex align-items-center justify-content-between py-1 px-2 rounded mb-1">
+                                            <div class="d-flex align-items-center gap-2 text-truncate me-2">
+                                                <i class="bi bi-check-circle-fill text-success small flex-shrink-0"></i>
+                                                <span class="small text-secondary text-truncate">{{ event.message |
+                                                    truncate }}</span>
+                                            </div>
+                                            <span
+                                                class="badge bg-light text-muted border fw-normal extra-small flex-shrink-0">
+                                                {{ event.timestamp }}
+                                            </span>
+                                        </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="row g-2 mb-3">
-              <div class="col-md-6">
-                <input class="form-control" placeholder="Search users" [(ngModel)]="searchTerm" (ngModelChange)="resetPagination()" />
-              </div>
-              <div class="col-md-3">
-                <select class="form-select" [(ngModel)]="roleFilter" (ngModelChange)="resetPagination()">
-                  <option value="All">All roles</option>
-                  <option value="Admin">Admin</option>
-                  <option value="Editor">Editor</option>
-                  <option value="Viewer">Viewer</option>
-                </select>
-              </div>
-              <div class="col-md-3 d-flex justify-content-end">
-                <button class="btn btn-primary" type="button" (click)="openCreateModal()">Add User</button>
-              </div>
-            </div>
+            <div class="col-12">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h2 class="h4 fw-semibold mb-1">User Directory</h2>
+                                <p class="text-muted mb-0">Manage team members with a modern admin view.</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-success-subtle text-success-emphasis">{{ filteredUsers.length }}
+                                    users</span>
+                            </div>
+                        </div>
 
-            <div class="mb-3 p-3 rounded-3 bg-light">
-              <div class="fw-semibold mb-2">Live Activity</div>
-              <ul class="list-unstyled mb-0">
-                @for (event of liveEvents(); track event.id) {
-                  <li class="small text-muted">{{ event.timestamp }} — {{ event.message | truncate }}</li>
-                }
-              </ul>
-            </div>
+                        <div class="row g-2 mb-3 align-items-center">
+                            <!-- Reduced width search input -->
+                            <div class="col-md-4 col-sm-6">
+                                <input class="form-control form-control-sm" placeholder="Search users"
+                                    [(ngModel)]="searchTerm" (ngModelChange)="resetPagination()" />
+                            </div>
 
-            <div class="table-responsive">
-              <div class="table-scroll-body" (scroll)="onScroll($event)">
-                <table class="table align-middle mb-0">
-                  <thead>
-                    <tr>
-                      <th style="width: 42px;">
-                        <input class="form-check-input" type="checkbox" [checked]="visibleUsers.length > 0 && visibleUsers.every(user => selectedUserIds().includes(user.id!))" (change)="toggleSelectAll()" />
-                      </th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Location</th>
-                      <th>Salary</th>
-                      <th>Status</th>
-                      <th class="text-end">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr [style.height.px]="virtualStartIndex() * rowHeight"></tr>
-                    @if (pagedUsers.length === 0) {
-                      <tr>
-                        <td colspan="7" class="text-center text-muted py-4">No users yet. Add one to get started.</td>
-                      </tr>
-                    } @else {
-                      @for (user of visibleUsers; track user.id) {
-                        <tr>
-                          <td>
-                            <input class="form-check-input" type="checkbox" [checked]="selectedUserIds().includes(user.id!)" (change)="toggleSelectUser(user.id)" />
-                          </td>
-                          <td>{{ user.name }}</td>
-                          <td>{{ user.email }}</td>
-                          <td><span class="badge bg-light text-dark">{{ user.role }}</span></td>
-                          <td>{{ user.location || '—' }}</td>
-                          <td>${{ user.salary | number }}</td>
-                          <td>
-                            @if (user.isActive) {
-                              <span class="badge bg-success-subtle text-success-emphasis">{{ user.isActive | statusLabel }}</span>
-                            } @else {
-                              <span class="badge bg-secondary-subtle text-secondary-emphasis">{{ user.isActive | statusLabel }}</span>
-                            }
-                          </td>
-                          <td class="text-end">
-                            <button class="btn btn-sm btn-outline-primary me-2" (click)="editUser(user)" aria-label="Edit user">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                                <path d="M12.146.146a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-4 1a.5.5 0 0 1-.65-.65l1-4a.5.5 0 0 1 .11-.168l10-10zM11.207 2 13 3.793 14.793 2 13 .207 11.207 2zM3.5 13.5l-1.5 1.5 1.5-1.5z"/>
-                              </svg>
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id)" aria-label="Delete user">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 .5.5v.5H5.5V5.5zm-1 1V13a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V6.5h1V5.5a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5v1h1zM7 7v6h1V7H7zm2 0v6h1V7H9z"/>
-                              </svg>
-                            </button>
-                          </td>
-                        </tr>
-                      }
-                    }
-                    <tr [style.height.px]="getBottomSpacerHeight()"></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                            <!-- Compact role dropdown -->
+                            <div class="col-md-3 col-sm-6">
+                                <select class="form-select form-select-sm" [(ngModel)]="roleFilter"
+                                    (ngModelChange)="resetPagination()">
+                                    <option value="All">All roles</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Editor">Editor</option>
+                                    <option value="Viewer">Viewer</option>
+                                </select>
+                            </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
-              <div class="d-flex align-items-center gap-2">
-                <div class="text-muted small">Showing {{ visibleUsers.length }} of {{ filteredUsers.length }} users</div>
-                @if (selectedUserIds().length) {
-                  <button class="btn btn-outline-danger btn-sm" (click)="deleteSelectedUsers()">Delete Selected ({{ selectedUserIds().length }})</button>
-                }
-              </div>
-              <div class="d-flex align-items-center gap-2">
-                <select class="form-select form-select-sm w-auto" [ngModel]="pageSize()" (ngModelChange)="changePageSize($event)">
-                  <option [ngValue]="6">6 per page</option>
-                  <option [ngValue]="10">10 per page</option>
-                  <option [ngValue]="15">15 per page</option>
-                </select>
-                <button class="btn btn-outline-secondary btn-sm" [disabled]="currentPage() === 1" (click)="previousPage()">Previous</button>
-                <span class="small fw-semibold">{{ currentPage() }} / {{ totalPages }}</span>
-                <button class="btn btn-outline-secondary btn-sm" [disabled]="currentPage() >= totalPages" (click)="nextPage()">Next</button>
-              </div>
+                            <!-- Action buttons aligned right -->
+                            <div class="col-md-5 d-flex justify-content-end align-items-center gap-2">
+                                @if (selectedUserIds().length) {
+                                <button class="btn btn-danger btn-sm" (click)="deleteSelectedUsers()">
+                                    Delete Selected ({{ selectedUserIds().length }})
+                                </button>
+                                }
+                                <button class="btn btn-gradient btn-md fw-semibold shadow-sm" type="button"
+                                    (click)="openCreateModal()">
+                                    <i class="bi bi-plus-lg me-1"></i> Add User
+                                </button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="table-responsive">
+                            <div class="table-scroll-body" (scroll)="onScroll($event)">
+                                <table class="table align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 42px;">
+                                                <input class="form-check-input" type="checkbox"
+                                                    [checked]="visibleUsers.length > 0 && visibleUsers.every(user => selectedUserIds().includes(user.id!))"
+                                                    (change)="toggleSelectAll()" />
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Location</th>
+                                            <th>Joined</th>
+                                            <th>Salary</th>
+                                            <th>Status</th>
+                                            <th class="text-end">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr [style.height.px]="virtualStartIndex() * rowHeight"></tr>
+                                        @if (pagedUsers.length === 0) {
+                                        <tr>
+                                            <td colspan="7" class="text-center text-muted py-4">No users yet. Add one to
+                                                get started.</td>
+                                        </tr>
+                                        } @else {
+                                        @for (user of visibleUsers; track user.id) {
+                                        <tr>
+                                            <td>
+                                                <input class="form-check-input" type="checkbox"
+                                                    [checked]="selectedUserIds().includes(user.id!)"
+                                                    (change)="toggleSelectUser(user.id)" />
+                                            </td>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td><span class="badge bg-light text-dark">{{ user.role }}</span></td>
+                                            <td>{{ user.location || '—' }}</td>
+                                            <td>{{ user.dateOfJoining ? (user.dateOfJoining | date:'mediumDate') : '—'
+                                                }}</td>
+                                            <td>${{ user.salary | number }}</td>
+                                            <td>
+                                                @if (user.isActive) {
+                                                <span class="badge rounded-pill text-bg-success">{{
+                                                    user.isActive | statusLabel }}</span>
+                                                } @else {
+                                                <span class="badge rounded-pill text-bg-secondary">{{
+                                                    user.isActive | statusLabel }}</span>
+                                                }
+                                            </td>
+                                            <td class="text-end">
+                                                <button class="btn btn-link p-0 me-2 text-primary shadow-none border-0"
+                                                    (click)="editUser(user)" aria-label="Edit user">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                                <button class="btn btn-link p-0 text-danger shadow-none border-0"
+                                                    (click)="deleteUser(user.id)" aria-label="Delete user">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        }
+                                        }
+                                        <tr [style.height.px]="getBottomSpacerHeight()"></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                            <div class="text-muted small">
+                                Showing {{ visibleUsers.length }} of {{ filteredUsers.length }} users
+                            </div>
+
+                            <div class="d-flex align-items-center gap-2">
+                                <select class="form-select form-select-sm w-auto" [ngModel]="pageSize()"
+                                    (ngModelChange)="changePageSize($event)">
+                                    <option [ngValue]="6">6 per page</option>
+                                    <option [ngValue]="10">10 per page</option>
+                                    <option [ngValue]="15">15 per page</option>
+                                </select>
+                                <button class="btn btn-outline-secondary btn-sm" [disabled]="currentPage() === 1"
+                                    (click)="previousPage()">Previous</button>
+                                <span class="small fw-semibold">{{ currentPage() }} / {{ totalPages }}</span>
+                                <button class="btn btn-outline-secondary btn-sm"
+                                    [disabled]="currentPage() >= totalPages" (click)="nextPage()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  @if (showModal()) {
+    @if (showModal()) {
     <div class="modal-backdrop fade show"></div>
     <div class="modal d-block" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 shadow">
-          <div class="modal-header border-0">
-            <div>
-              <h5 class="modal-title">{{ editingId() !== null ? 'Edit User' : 'Add New User' }}</h5>
-              <p class="text-muted small mb-0">Capture salary and active status as part of the profile.</p>
-            </div>
-            <button type="button" class="btn-close" (click)="showModal.set(false)"></button>
-          </div>
-          <div class="modal-body">
-            @if (errorMessage()) {
-              <div class="alert alert-danger">{{ errorMessage() }}</div>
-            }
-
-            <form (ngSubmit)="submitUser()" class="row g-3">
-              <div class="col-12">
-                <label class="form-label">Name</label>
-                <input class="form-control" name="name" [(ngModel)]="form.name" placeholder="Enter full name" />
-              </div>
-
-              <div class="col-12">
-                <label class="form-label">Email</label>
-                <input class="form-control" name="email" type="email" [(ngModel)]="form.email" placeholder="name@example.com" />
-              </div>
-
-              <div class="col-12">
-                <label class="form-label">Role</label>
-                <select class="form-select" name="role" [(ngModel)]="form.role">
-                  <option value="Viewer">Viewer</option>
-                  <option value="Editor">Editor</option>
-                  <option value="Admin">Admin</option>
-                </select>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label">Salary</label>
-                <input class="form-control" name="salary" type="number" [(ngModel)]="form.salary" />
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label">Location</label>
-                <input class="form-control" name="location" [(ngModel)]="form.location" placeholder="Enter location" />
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label">Status</label>
-                <div class="form-check form-switch mt-2">
-                  <input class="form-check-input" type="checkbox" name="isActive" [(ngModel)]="form.isActive" />
-                  <label class="form-check-label">Active</label>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header border-0">
+                    <div>
+                        <h5 class="modal-title">{{ editingId() !== null ? 'Edit User' : 'Add New User' }}</h5>
+                        <p class="text-muted small mb-0">Capture salary and active status as part of the profile.</p>
+                    </div>
+                    <button type="button" class="btn-close" (click)="showModal.set(false)"></button>
                 </div>
-              </div>
+                <div class="modal-body">
+                    @if (errorMessage()) {
+                    <div class="alert alert-danger">{{ errorMessage() }}</div>
+                    }
 
-              <div class="col-12 d-flex justify-content-end gap-2 mt-2">
-                <button class="btn btn-outline-secondary" type="button" (click)="showModal.set(false)">Cancel</button>
-                <button class="btn btn-primary" type="submit" [disabled]="isSubmitting()">
-                  {{ isSubmitting() ? 'Saving...' : (editingId() !== null ? 'Update User' : 'Save User') }}
-                </button>
-              </div>
-            </form>
-          </div>
+                    <form (ngSubmit)="submitUser()" class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Name</label>
+                            <input class="form-control" name="name" [(ngModel)]="form.name"
+                                placeholder="Enter full name" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Email</label>
+                            <input class="form-control" name="email" type="email" [(ngModel)]="form.email"
+                                placeholder="name@example.com" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Role</label>
+                            <select class="form-select" name="role" [(ngModel)]="form.role">
+                                <option value="Viewer">Viewer</option>
+                                <option value="Editor">Editor</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Salary</label>
+                            <input class="form-control" name="salary" type="number" [(ngModel)]="form.salary" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Location</label>
+                            <input class="form-control" name="location" [(ngModel)]="form.location"
+                                placeholder="Enter location" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Date of joining</label>
+                            <input class="form-control" name="dateOfJoining" type="date"
+                                [(ngModel)]="form.dateOfJoining" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Status</label>
+                            <div class="form-check form-switch mt-2">
+                                <input class="form-check-input" type="checkbox" name="isActive"
+                                    [(ngModel)]="form.isActive" />
+                                <label class="form-check-label">Active</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-end gap-2 mt-2">
+                            <button class="btn btn-outline-secondary" type="button"
+                                (click)="showModal.set(false)">Cancel</button>
+                            <button class="btn btn-primary" type="submit" [disabled]="isSubmitting()">
+                                {{ isSubmitting() ? 'Saving...' : (editingId() !== null ? 'Update User' : 'Save User')
+                                }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  }
+    }
 </div>

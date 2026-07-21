@@ -8,6 +8,7 @@ export interface User {
   role: string;
   salary: number;
   location: string;
+  dateOfJoining?: string;
   isActive: boolean;
 }
 

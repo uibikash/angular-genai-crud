@@ -3,105 +3,311 @@
 }
 
 .dashboard-shell {
-  padding: 1rem;
-  background:
-    radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 22%),
-    linear-gradient(135deg, #f8fbff 0%, #eef4ff 100%);
-  min-height: 100vh;
-}
+  .navbar {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #4f46e5 0%, #ca48ec 100%) !important;
+    backdrop-filter: blur(8px);
+  }
 
-.navbar {
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 16px 40px rgba(31, 41, 55, 0.12);
-}
+  .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px;
+    transition: all 0.2s ease;
 
-.nav-link {
-  color: rgba(255,255,255,0.9) !important;
-}
+    &:hover {
+      color: #fff !important;
+      background: rgba(255, 255, 255, 0.15);
+    }
 
-.nav-link.active {
-  font-weight: 700;
+    &.active {
+      color: #fff !important;
+      background: rgba(255, 255, 255, 0.25);
+      font-weight: 600;
+    }
+  }
 }
 
 .hero-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f2f7ff 100%);
-  border: 1px solid rgba(129, 140, 248, 0.16);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
 }
 
 .stats-card {
-  background: rgba(255,255,255,0.92);
-  border: 1px solid #e4ebff;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-}
-
-.card {
-  background: #fff;
-  border: 1px solid rgba(129, 140, 248, 0.12);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
-}
-
-.btn-primary {
-  min-width: 120px;
-  border: 0;
-  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
-}
-
-.btn-outline-primary,
-.btn-outline-secondary,
-.btn-outline-danger {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .small {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
 }
 
-.btn-outline-primary:hover,
-.btn-outline-secondary:hover,
-.btn-outline-danger:hover {
-  transform: translateY(-1px);
+/* Activity Feed Styling */
+.activity-box {
+  background: #f8fafc;
+  border-left: 3px solid #4f46e5;
+  border-radius: 8px;
+}
+
+.stats-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+
+  .stats-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+
+  .h5 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Activity Feed constraint */
+.activity-box {
+  background-color: #f8fafc !important;
+}
+
+.activity-list {
+  max-height: 72px; /* Limits max height to ~3 lines */
+  overflow-y: auto;  /* Adds scrollbar if there are many items */
+  padding-right: 4px;
+
+  /* Custom thin scrollbar */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+}
+
+
+/* Container Fix: Wraps the table neatly */
+.table-scroll-body {
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  overflow-x: auto; /* Ensures horizontal scroll if column contents overflow */
+}
+
+/* Header Container */
+.table thead {
+  /* Continuous gradient background across the ENTIRE header row */
+  background: linear-gradient(135deg, #4f46e5 0%, #ca48ec 100%);
+}
+
+/* Individual Header Cells */
+.table thead th {
+  /* Reset Bootstrap's internal cell background variables */
+  background: transparent !important;
+  --bs-table-bg: transparent;
+  --bs-table-color: #ffffff;
+
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.25rem;
+  border: none !important;
+  white-space: nowrap; /* Prevents column header titles from wrapping awkwardly */
+}
+
+/* Rounded top outer corners for first and last header cells */
+.table thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.table thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+/* Table Body Padding & Alignment */
+.table tbody td {
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+
+.table tbody tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Inline action buttons */
+td.text-end {
+  white-space: nowrap; /* Keeps both buttons strictly side-by-side */
+
+  .btn-link {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.1); /* Subtle zoom on hover */
+    }
+
+    &:focus, &:active {
+      box-shadow: none !important;
+    }
+  }
+}
+
+/* Custom Badges */
+.badge-role-admin {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.badge-role-editor {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
+
+.badge-role-viewer {
+  background-color: #f1f5f9;
+  color: #475569;
 }
 
 .modal-backdrop {
-  background: rgba(10, 20, 40, 0.5);
+  backdrop-filter: blur(4px);
+  background-color: rgba(15, 23, 42, 0.4);
 }
 
 .modal-content {
-  border: 0;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.table-scroll-body {
-  max-height: 420px;
+.form-control, .form-select {
+  border-color: #e2e8f0;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+
+  &:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  }
+}
+
+.activity-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+  }
+}
+
+/* Pulsing Realtime Indicator */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-ring 1.8s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Scrollable Container with Custom Thin Scrollbar */
+.activity-scroll {
+  max-height: 85px;
   overflow-y: auto;
-  border: 1px solid #eef2ff;
-  border-radius: 0.95rem;
-  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  padding-right: 2px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+
+    &:hover {
+      background: #94a3b8;
+    }
+  }
 }
 
-.table-scroll-body .table {
-  margin-bottom: 0;
+/* Row Hover Effect */
+.activity-item {
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #f8fafc;
+  }
 }
 
-.table-scroll-body thead th {
-  position: sticky;
-  top: 0;
-  background: #ffffff;
-  z-index: 1;
-  border-bottom: 1px solid #e6ebff;
+/* Compact Badge Typography */
+.extra-small {
+  font-size: 0.7rem;
+  padding: 0.2em 0.5em;
 }
 
-.badge {
-  padding: 0.5rem 0.7rem;
-}
+/* Gradient Button styling with NO hover movement/shaking */
+.btn-gradient {
+  background: linear-gradient(135deg, #4f46e5 0%, #ca48ec 100%) !important;
+  color: #ffffff !important;
+  border: 3px !important;
+    padding: 0.80rem 2rem !important;
+  font-size: 1rem !important;          /* Slightly larger font size */
+  font-weight: 600;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Smooth color transition only (no position shifts) */
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 
-.form-control,
-.form-select {
-  border-radius: 0.8rem;
-  border-color: #dce7ff;
-}
+  /* Hover state: background glow & color shift without moving/shaking */
+  &:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #b832da 100%) !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+    color: #ffffff !important;
+    transform: none !important; /* Keeps button perfectly still */
+  }
 
-.form-control:focus,
-.form-select:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.16);
+  /* Active state on click */
+  &:active {
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2) !important;
+    transform: none !important;
+  }
 }

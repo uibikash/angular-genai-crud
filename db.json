@@ -6,42 +6,109 @@
       "role": "Admin",
       "salary": 120000,
       "location": "bangalore",
-      "isActive": false,
+      "dateOfJoining": "2026-07-19",
+      "isActive": true,
       "id": "1"
     },
     {
-      "id": "2",
       "name": "Asha Singh",
       "email": "asha@example.com",
       "role": "Editor",
       "salary": 85000,
-      "isActive": true
+      "location": "Mumbai",
+      "dateOfJoining": "2026-10-23",
+      "isActive": false,
+      "id": "2"
     },
     {
-      "name": "Megha",
+      "name": "Meghambari pratyasha",
       "email": "mg@g.com",
       "role": "Editor",
       "salary": 345676,
+      "location": "Balasore",
+      "dateOfJoining": "2026-04-09",
       "isActive": true,
       "id": "Rco8isTP4IY"
-    },
-    {
-      "name": "wwewe",
-      "email": "ff@g.com",
-      "role": "Admin",
-      "salary": 0,
-      "location": "ddfd",
-      "isActive": true,
-      "id": "WK4BO8j5s1o"
     },
     {
       "name": "Asha Singh",
       "email": "admin@example.com",
       "role": "Viewer",
       "salary": 4555,
-      "location": "",
+      "location": "Delhi",
+      "dateOfJoining": "2026-10-16",
       "isActive": true,
       "id": "gps6wvO71RA"
+    },
+    {
+      "name": "Manas Barik",
+      "email": "m@g.com",
+      "role": "Viewer",
+      "salary": 40000,
+      "location": "mkg",
+      "dateOfJoining": "2026-07-26",
+      "isActive": false,
+      "id": "Km6A6FeMJCY"
+    },
+    {
+      "name": "Banamali barik",
+      "email": "b@g.com",
+      "role": "Editor",
+      "salary": 500000,
+      "location": "mko",
+      "dateOfJoining": "2026-08-04",
+      "isActive": true,
+      "id": "WoXVPkXpsYY"
+    },
+    {
+      "name": "Barik ranjan",
+      "email": "b@g.com",
+      "role": "Admin",
+      "salary": 4788555,
+      "location": "bangalore",
+      "dateOfJoining": "2026-07-25",
+      "isActive": true,
+      "id": "Tjy1Op0StuA"
+    },
+    {
+      "name": "Manas Barik",
+      "email": "mg@g.com",
+      "role": "Viewer",
+      "salary": 0,
+      "location": "",
+      "dateOfJoining": "2026-07-31",
+      "isActive": true,
+      "id": "WwQBatuogWc"
+    },
+    {
+      "name": "dsfdf",
+      "email": "dfdf@g.com",
+      "role": "Viewer",
+      "salary": 0,
+      "location": "",
+      "dateOfJoining": "",
+      "isActive": false,
+      "id": "po9bJFfnx5I"
+    },
+    {
+      "name": "meghaditya b",
+      "email": "m@g.com",
+      "role": "Viewer",
+      "salary": 0,
+      "location": "",
+      "dateOfJoining": "",
+      "isActive": true,
+      "id": "neL5vLi1dAs"
+    },
+    {
+      "name": "sutu",
+      "email": "s@s.com",
+      "role": "Editor",
+      "salary": 0,
+      "location": "",
+      "dateOfJoining": "",
+      "isActive": true,
+      "id": "O41VzY4GpJI"
     }
   ],
   "events": [
@@ -92,6 +159,186 @@
       "message": "User Bikash Barik saved",
       "type": "success",
       "timestamp": "3:37:01 AM"
+    },
+    {
+      "id": "Z7GhrERp7b8",
+      "message": "User Manas Barik saved",
+      "type": "success",
+      "timestamp": "2:26:35 PM"
+    },
+    {
+      "id": "uYt2jHU7IUo",
+      "message": "User manamali barik saved",
+      "type": "success",
+      "timestamp": "2:27:25 PM"
+    },
+    {
+      "id": "ilKZ8TbaYQ4",
+      "message": "User Banamali barik saved",
+      "type": "success",
+      "timestamp": "2:28:02 PM"
+    },
+    {
+      "id": "WS3sb7J7UAs",
+      "message": "User Barik ranjan saved",
+      "type": "success",
+      "timestamp": "2:41:59 PM"
+    },
+    {
+      "id": "FVah1r-F4z8",
+      "message": "User Manas Barik saved",
+      "type": "success",
+      "timestamp": "2:44:36 PM"
+    },
+    {
+      "id": "MilsMwgCxvI",
+      "message": "User Meghambari pratyasha saved",
+      "type": "success",
+      "timestamp": "2:44:53 PM"
+    },
+    {
+      "id": "vWqUnQzdE-4",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "2:59:15 PM"
+    },
+    {
+      "id": "e0r_GlF9DZs",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "3:10:25 PM"
+    },
+    {
+      "id": "ZNtYBpa51Kw",
+      "message": "User Manas Barik saved",
+      "type": "success",
+      "timestamp": "3:13:38 PM"
+    },
+    {
+      "id": "x1v2S7WiaQo",
+      "message": "User sfsds saved",
+      "type": "success",
+      "timestamp": "3:43:39 PM"
+    },
+    {
+      "id": "-VAgayqmt08",
+      "message": "User dsfdf saved",
+      "type": "success",
+      "timestamp": "11:13:11 PM"
+    },
+    {
+      "id": "aq4TjL4jFyQ",
+      "message": "User meghaditya b saved",
+      "type": "success",
+      "timestamp": "11:19:45 PM"
+    },
+    {
+      "id": "fMUULTddq7s",
+      "message": "User sfsds saved",
+      "type": "success",
+      "timestamp": "11:33:04 PM"
+    },
+    {
+      "id": "Y_dx4xOie7M",
+      "message": "User Barik ranjan saved",
+      "type": "success",
+      "timestamp": "11:33:14 PM"
+    },
+    {
+      "id": "frt0fftBybo",
+      "message": "User Barik ranjan saved",
+      "type": "success",
+      "timestamp": "11:34:25 PM"
+    },
+    {
+      "id": "lpgfRbsbCK4",
+      "message": "User sfsds saved",
+      "type": "success",
+      "timestamp": "11:34:34 PM"
+    },
+    {
+      "id": "6J0QewUQ9pg",
+      "message": "User dsfdf saved",
+      "type": "success",
+      "timestamp": "11:34:43 PM"
+    },
+    {
+      "id": "MIRsJKYGdkM",
+      "message": "User Barik ranjan saved",
+      "type": "success",
+      "timestamp": "11:43:59 PM"
+    },
+    {
+      "id": "opzn2quAZo4",
+      "message": "User Meghambari pratyasha saved",
+      "type": "success",
+      "timestamp": "12:09:20 AM"
+    },
+    {
+      "id": "UT5B705kGks",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "12:16:24 AM"
+    },
+    {
+      "id": "iM8LDl86_94",
+      "message": "User sutu saved",
+      "type": "success",
+      "timestamp": "12:22:37 AM"
+    },
+    {
+      "id": "oJCGxvlor6s",
+      "message": "User Bikash Barik saved",
+      "type": "success",
+      "timestamp": "12:23:46 AM"
+    },
+    {
+      "id": "8BM2Dl69DSY",
+      "message": "User Bikash Barik saved",
+      "type": "success",
+      "timestamp": "12:40:34 AM"
+    },
+    {
+      "id": "6krVAW6jqCA",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "12:45:32 AM"
+    },
+    {
+      "id": "wqRDOUeLto8",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "12:45:43 AM"
+    },
+    {
+      "id": "-Ny_TTszKhY",
+      "message": "User Meghambari pratyasha saved",
+      "type": "success",
+      "timestamp": "12:45:54 AM"
+    },
+    {
+      "id": "szM1HSnIzk0",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "12:46:14 AM"
+    },
+    {
+      "id": "up-88quS_HE",
+      "message": "User Asha Singh saved",
+      "type": "success",
+      "timestamp": "12:46:25 AM"
+    },
+    {
+      "id": "k6ahAjz2vcU",
+      "message": "User Banamali barik saved",
+      "type": "success",
+      "timestamp": "12:46:36 AM"
+    },
+    {
+      "id": "WfDHO1ZSY4I",
+      "message": "User Manas Barik saved",
+      "type": "success",
+      "timestamp": "12:47:26 AM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
